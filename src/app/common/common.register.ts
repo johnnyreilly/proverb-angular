@@ -1,4 +1,6 @@
-﻿import { commonServiceName, commonServiceFactory } from "./common";
+﻿import angular from "angular";
+
+import { commonServiceName, commonServiceFactory } from "./common";
 import { loggerServiceName, LoggerService } from "./logger";
 import { modalDialogServiceName, ModalDialogService } from "./modalDialog";
 import { spinnerServiceName, SpinnerService } from "./spinner";

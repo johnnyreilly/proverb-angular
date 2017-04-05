@@ -1,5 +1,8 @@
+import angular from "angular";
+import "angular-mocks";
+
 import { initialiseApp } from "../../../src/app/app";
-import { Common } from "../../../src/app/common/common";
+import { CommonService } from "../../../src/app/common/common";
 import { sayingsControllerName, SayingsController } from "../../../src/app/sayings/sayingsController";
 import { DataContext } from "../../../src/app/services/datacontext";
 import { Sage } from "../../../src/app/services/repository.sage";
@@ -17,7 +20,7 @@ function getInjectable() {
     let sage_getAll_deferred: ng.IDeferred<Sage[]>;
     let saying_getAll_deferred: ng.IDeferred<Saying[]>;
     let $location: ng.ILocationService;
-    let common: Common;
+    let common: CommonService;
     let datacontext: DataContext; // controller dependencies
     let sayingsController: SayingsController; // the controller
 
@@ -26,7 +29,7 @@ function getInjectable() {
         _$location_: ng.ILocationService,
         _$rootScope_: ng.IRootScopeService,
         _$q_: ng.IQService,
-        _common_: Common,
+        _common_: CommonService,
         _datacontext_: DataContext
     ) => {
         $controller = _$controller_;

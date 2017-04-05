@@ -1,5 +1,8 @@
-﻿import { initialiseApp } from "../../../src/app/app";
-import { Common } from "../../../src/app/common/common";
+﻿import angular from "angular";
+import "angular-mocks";
+
+import { initialiseApp } from "../../../src/app/app";
+import { CommonService } from "../../../src/app/common/common";
 import { SageEditRouteParams, sageEditControllerName, SageEditController } from "../../../src/app/sages/sageEditController";
 import { DataContext } from "../../../src/app/services/datacontext";
 import { Sage } from "../../../src/app/services/repository.sage";
@@ -17,7 +20,7 @@ function getInjectable() {
     let getById_deferred: ng.IDeferred<Sage>; // deferred used for promises
     let $location: ng.ILocationService;
     let $stateParams: SageEditRouteParams;
-    let common: Common;
+    let common: CommonService;
     let datacontext: DataContext; // controller dependencies
     let sageEditController: SageEditController; // the controller
 
@@ -26,7 +29,7 @@ function getInjectable() {
         _$location_: ng.ILocationService,
         _$rootScope_: ng.IRootScopeService,
         _$q_: ng.IQService,
-        _common_: Common,
+        _common_: CommonService,
         _datacontext_: DataContext
     ) => {
         $controller = _$controller_;

@@ -1,4 +1,6 @@
-﻿// Thanks @Basarat! http://stackoverflow.com/a/24863256/761388
+﻿import angular from "angular";
+
+// Thanks @Basarat! http://stackoverflow.com/a/24863256/761388
 function safeWatch<T extends Function>(expression: T) {
     return () => {
         try {

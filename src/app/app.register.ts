@@ -1,4 +1,6 @@
-﻿import { createCommon } from "./common/common.register";
+﻿import angular from "angular";
+
+import { createCommon } from "./common/common.register";
 import { dashboardControllerName, DashboardController } from "./dashboard/dashboardController";
 import { sageComponentName, sageComponent } from "./sages/sageComponent";
 import { sagesControllerName, SagesController } from "./sages/sagesController";

@@ -28,13 +28,13 @@ module.exports = {
     loaders: [{
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'babel-loader?presets[]=es2015!ts-loader'
+      loader: 'babel-loader?presets[]=es2016&presets[]=es2015!ts-loader'
     }, {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ['es2015']
+        presets: ['es2016','es2015']
       }
     }, {
       test: /\.html$/,

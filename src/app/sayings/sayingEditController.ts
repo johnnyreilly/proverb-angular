@@ -1,4 +1,6 @@
-﻿import { commonServiceName, CommonService } from "../common/common";
+﻿import angular from "angular";
+
+import { commonServiceName, CommonService } from "../common/common";
 import { modalDialogServiceName, ModalDialogService } from "../common/modalDialog";
 import { Loggers } from "../common/logger";
 import { datacontextName, DataContext } from "../services/datacontext";

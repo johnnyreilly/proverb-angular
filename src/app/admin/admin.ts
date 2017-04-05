@@ -1,4 +1,6 @@
-﻿import { commonServiceName, CommonService } from "../common/common";
+﻿import angular from "angular";
+
+import { commonServiceName, CommonService } from "../common/common";
 
 interface AdminVm {
     title: string;
