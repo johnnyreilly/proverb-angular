@@ -3,7 +3,18 @@
 
 var path = require('path');
 var webpack = require('webpack');
-var packageJson = require('./package.json');
+
+var babelOptions = {
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "es2016"
+  ]
+};
 
 module.exports = {
   cache: true,
@@ -25,30 +36,40 @@ module.exports = {
     chunkFilename: '[chunkhash].js'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'babel-loader?presets[]=es2016&presets[]=es2015!ts-loader'
+      use: [
+        {
+          loader: 'babel-loader',
+          options: babelOptions
+        },
+        {
+          loader: 'ts-loader'
+        }
+      ]
     }, {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['es2016','es2015']
-      }
+      use: [
+        {
+          loader: 'babel-loader',
+          options: babelOptions
+        }
+      ]
     }, {
       test: /\.html$/,
       exclude: /node_modules/,
-      loader: 'raw'
+      loader: 'raw-loader'
     }]
   },
   plugins: [ // Check gulp/webpack.js for build specific plugins
-      new webpack.ProvidePlugin({
-          "window.jQuery": "jquery"
-      })
+    new webpack.ProvidePlugin({
+      "window.jQuery": "jquery"
+    })
   ],
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: ['', '.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js']
   },
 };

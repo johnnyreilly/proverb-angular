@@ -23,19 +23,15 @@ gulp.task('delete-dist-contents', function (done) {
     clean.run(done);
 });
 
-gulp.task('build-process.env.NODE_ENV', function () {
-    process.env.NODE_ENV = 'production';
-});
-
-gulp.task('build-less', ['delete-dist-contents', 'build-process.env.NODE_ENV'], function(done) {
+gulp.task('build-less', ['delete-dist-contents'], function(done) {
   less.build().then(function() { done(); });
 });
 
-gulp.task('build-js', ['delete-dist-contents', 'build-process.env.NODE_ENV'], function (done) {
+gulp.task('build-js', ['delete-dist-contents'], function (done) {
     webpack.build().then(function () { done(); });
 });
 
-gulp.task('build-other', ['delete-dist-contents', 'build-process.env.NODE_ENV'], function () {
+gulp.task('build-other', ['delete-dist-contents'], function () {
     staticFiles.build();
 });
 
