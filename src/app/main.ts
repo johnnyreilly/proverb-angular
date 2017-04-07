@@ -1,8 +1,17 @@
 import "babel-polyfill";
 import { initialiseApp, startApp } from "./app";
-import $ from "jquery";
 
-// Load startup data from the server
-$.getJSON("//proverb.azurewebsites.net/Startup")
-// $.getJSON("http://localhost:7778/Startup")
-    .then(startUpData => startApp(initialiseApp(startUpData)));
+const request = new XMLHttpRequest();
+
+request.open("GET", "//proverb.azurewebsites.net/Startup", true);
+// request.open("GET", "http://localhost:7778/Startup", true);
+
+request.onload = () => {
+  if (request.status >= 200 && request.status < 400) {
+    const startUpData = JSON.parse(request.responseText);
+
+    startApp(initialiseApp(startUpData));
+  }
+};
+
+request.send();
