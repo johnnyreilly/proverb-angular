@@ -132,6 +132,10 @@ export class SageEditController {
         return this.hasChanges && !this.isSavingOrRemoving && this.$scope.form.$valid;
     }
 
+    get canDelete(): boolean {
+        return !this.isSavingOrRemoving && !!this.sage;
+    }
+
     get isSavingOrRemoving(): boolean {
         return this._isSavingOrRemoving;
     }

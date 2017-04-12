@@ -10,15 +10,15 @@
                     </button>
                     <button class="btn btn-danger"
                             ng-click="vm.remove()"
-                            ng-disabled="vm.isSavingOrRemoving">
+                            ng-disabled="!vm.canDelete">
                         <i class="fa fa-trash fa-lg"></i>Remove
                     </button>
                     <span ng-show="vm.hasChanges"
-                          class="dissolve-animation ng-hide">
+                          class="ng-hide">
                         <i class="fa fa-asterisk fa-lg orange"></i>
                     </span>
                 </div>
-                <div class="widget wblue">
+                <div class="widget">
                     <div widget-header title="{{vm.title}}"></div>
                     <div class="widget-content form-horizontal">
                         <div class="form-group">

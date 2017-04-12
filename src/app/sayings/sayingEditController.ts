@@ -149,6 +149,10 @@ export class SayingEditController {
         return this.hasChanges && !this.isSavingOrRemoving && this.$scope.form.$valid;
     }
 
+    get canDelete(): boolean {
+        return !this.isSavingOrRemoving && !!this.saying;
+    }
+
     get isSavingOrRemoving(): boolean {
         return this._isSavingOrRemoving;
     }
