@@ -1,12 +1,11 @@
-﻿<div>
-    <proverb-topnav is-collapsed="vm.topnavCollapsed" on-is-collapsed-changed="vm.isCollapsedChanged(newIsCollapsed)"></proverb-topnav>
+﻿<proverb-topnav 
+    current-route="vm.currentRoute" 
+    is-collapsed="vm.topnavCollapsed" 
+    on-is-collapsed-changed="vm.isCollapsedChanged(newIsCollapsed)"></proverb-topnav>
 
-    <section id="content" class="content">
-        <proverb-waiter is-waiting="vm.isBusy" spinner-options="vm.spinnerOptions" wait-message="vm.busyMessage"></proverb-waiter>
+<section id="content" class="content">
+    <proverb-waiter is-waiting="vm.isBusy" spinner-options="vm.spinnerOptions" wait-message="vm.busyMessage"></proverb-waiter>
 
-        <proverb-sidebar current-route="vm.currentRoute"></proverb-sidebar>
-
-        <div ui-view class="shuffle-animation">
-        </div>
-    </section>
-</div>
+    <div id="main" ui-view>
+    </div>
+</section>

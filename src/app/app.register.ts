@@ -10,7 +10,6 @@ import { sayingsControllerName, SayingsController } from "./sayings/sayingsContr
 import { sayingEditControllerName, SayingEditController } from "./sayings/sayingEditController";
 import { aboutControllerName, AboutController } from "./about/aboutController";
 import { shellComponentName, shellComponent } from "./layout/shellComponent";
-import { sidebarComponentName, sidebarComponent } from "./layout/sidebarComponent";
 import { topnavComponentName, topnavComponent } from "./layout/topnavComponent";
 import { waiterComponentName, waiterComponent } from "./layout/waiterComponent";
 import { datacontextName, datacontextServiceFactory } from "./services/datacontext";
@@ -40,7 +39,6 @@ function createApp() {
         "ui.bootstrap"      // ui-bootstrap (ex: carousel, pagination, dialog)
     ])
     .component(shellComponentName, shellComponent)
-    .component(sidebarComponentName, sidebarComponent)
     .component(topnavComponentName, topnavComponent)
     .component(sageComponentName, sageComponent)
     .component(waiterComponentName, waiterComponent)

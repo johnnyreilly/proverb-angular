@@ -1,4 +1,4 @@
-﻿export const waiterComponentName = "proverb-waiter";
+﻿export const waiterComponentName = "proverbWaiter";
 
 class WaiterController {
 

@@ -85,8 +85,6 @@ function configureHttpProvider(app: ng.IModule) {
                 if (!cachedAlready) {
                     requestConfig.url = config.appRoot + requestConfig.url + config.urlCacheBusterSuffix;
                 }
-
-                let i = 2;
             }
 
             return requestConfig;

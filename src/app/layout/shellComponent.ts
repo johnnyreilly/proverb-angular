@@ -35,6 +35,7 @@ class ShellController {
 
     $onInit() {
         this.log = this.common.logger.getLoggers(shellComponentName);
+
         this.busyMessage = "Please wait ...";
         this.isBusy = true;
         this.spinnerOptions = {
@@ -50,10 +51,7 @@ class ShellController {
         this.topnavCollapsed = true;
 
         this.wireUpEventListeners();
-        this.activate();
-    }
 
-    activate() {
         this.common.activateController([], shellComponentName, "Loading....")
             .then(() => {
                 this.log.success("Proverb v" + this.config.version + " loaded!", null, true);

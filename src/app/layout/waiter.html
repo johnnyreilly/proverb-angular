@@ -1,7 +1,6 @@
-﻿<div ng-show="vm.isWaiting" class="page-splash dissolve-animation">
+﻿<div ng-if="vm.isWaiting" class="waiter-background">
     <div spinner="vm.spinnerOptions"></div>
-    <div class="page-splash-message">
+    <h1>
         {{ vm.waitMessage }}
-        <div class="page-splash-message-subtle"><!--A sub message could go here--></div>
-    </div>
+    </h1>
 </div>

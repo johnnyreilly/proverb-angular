@@ -10,7 +10,6 @@ export function widgetHeader() {
         scope: {
             "title": "@",
             "subtitle": "@",
-            "rightText": "@",
             "allowCollapse": "@"
         },
         template: require("./widgetHeader.html")

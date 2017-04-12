@@ -16,20 +16,19 @@ export class DashboardController {
         private datacontext: DataContext
         ) {
 
-        this.sages = [];
-
-        this.log = common.logger.getLoggers(dashboardControllerName);
-
-        this.activate();
     }
 
-    // Prototype methods
+    $onInit() {
+        this.sages = [];
 
-    activate() {
+        this.log = this.common.logger.getLoggers(dashboardControllerName);
+
         const promises: ng.IPromise<any>[] = [this.getSages()];
         this.common.activateController(promises, dashboardControllerName, "Dashboard")
             .then(() => this.log.info("Activated Dashboard View"));
     }
+
+    // Prototype methods
 
     getSages() {
         return this.datacontext.sage.getAll().then(data => this.sages = data);
