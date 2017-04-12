@@ -107,7 +107,7 @@ export class LoggerService {
 
         source = source ? "[" + source + "] " : "";
 
-        // Perform log 
+        // Perform log
         logger(source, message, data);
 
         // Show toast if required

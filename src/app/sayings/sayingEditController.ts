@@ -150,7 +150,7 @@ export class SayingEditController {
     }
 
     get canDelete(): boolean {
-        return !this.isSavingOrRemoving && !!this.saying;
+        return !this.isSavingOrRemoving && !!this.saying && !!this.saying.id;
     }
 
     get isSavingOrRemoving(): boolean {

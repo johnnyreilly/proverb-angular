@@ -6,8 +6,8 @@ Proverb is a simple app that stores the wise sayings of sages.  Most notably tho
 
 This repository is built using the following technologies:
 
-- TypeScript using ES2015
-- AngularJS 1.5
+- TypeScript using ES-new
+- AngularJS 1.6
 - Webpack (with ts-loader for TypeScript compilation and babel-loader for transpilation)
 - Karma for testing
 
