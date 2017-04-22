@@ -1,7 +1,7 @@
 version: 1.0.{build}
 
 environment:
-  nodejs_version: "5.0"
+  nodejs_version: "6"
   GithubEmail: johnny_reilly@hotmail.com
   GithubUsername: johnnyreilly
   GithubPersonalAccessToken:
