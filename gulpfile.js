@@ -5,7 +5,6 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var eslint = require('gulp-eslint');
 var tslint = require("gulp-tslint");
-var yargs = require("yargs").argv;
 
 var less = require('./gulp/less');
 var webpack = require('./gulp/webpack');
@@ -13,8 +12,6 @@ var staticFiles = require('./gulp/staticFiles');
 var tests = require('./gulp/tests');
 var clean = require('./gulp/clean');
 var inject = require('./gulp/inject');
-
-var isDebug = yargs.mode === "Debug";
 
 var eslintSrcs = ['./gulp/**/*.js'];
 var tslintSrcs = ['./src/**/*.ts', './test/**/*.ts', '!**/*.d.ts'];
@@ -39,14 +36,8 @@ gulp.task('run-tests', [], function (done) {
     tests.run(done);
 });
 
-gulp.task('build-release', ['build-less', 'build-js', 'build-other', 'eslint', 'tslint'], function () {
+gulp.task('build', ['build-less', 'build-js', 'build-other', 'eslint', 'tslint'], function () {
     inject.build();
-});
-
-gulp.task('build', isDebug ? [] : ['build-release'], function () {
-    if (isDebug) {
-        gutil.log(gutil.colors.red("In debug mode so not building client side code; your gulp watch task should be running. Type 'npm run watch' at the command prompt in the project directory"));
-    }
 });
 
 gulp.task('eslint', function () {
