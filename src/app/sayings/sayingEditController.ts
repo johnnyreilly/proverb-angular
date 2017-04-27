@@ -83,7 +83,7 @@ export class SayingEditController {
                 this._isSavingOrRemoving = true;
 
                 this.common.waiter(this.datacontext.saying.remove(this.saying.id), sayingEditControllerName, "Removing saying")
-                    .then(response => {
+                    .then(_response => {
 
                         this.log.success("Removed saying");
                         this.$location.path("/sayings/").search("sageId", this.saying.sageId);
@@ -111,7 +111,7 @@ export class SayingEditController {
         sayingToSave.sage = null;
 
         this.common.waiter(this.datacontext.saying.save(sayingToSave), sayingEditControllerName, "Saving saying")
-            .then(sayingId => {
+            .then(_sayingId => {
 
                 this.log.success("Saved saying");
                 this.$location.path("/sayings/").search("sageId", sayingToSave.sageId);

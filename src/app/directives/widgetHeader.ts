@@ -16,7 +16,7 @@ export function widgetHeader() {
     };
     return directive;
 
-    function link(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) {
+    function link(_scope: ng.IScope, _element: ng.IAugmentedJQuery, attrs: ng.IAttributes) {
         attrs.$set("class", "widget-head");
     }
 }

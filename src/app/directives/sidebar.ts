@@ -13,7 +13,7 @@ export function sidebar() {
     };
     return directive;
 
-    function link(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) {
+    function link(scope: ng.IScope, element: ng.IAugmentedJQuery, _attrs: ng.IAttributes) {
 
         const $sidebarInner = element.find(".sidebar-inner");
         const $dropdownElement = element.find(".sidebar-dropdown a");
@@ -34,7 +34,7 @@ export function sidebar() {
         });
 
         // collapse sidebar when route change starts (only affects mobile)
-        scope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
+        scope.$on("$stateChangeStart", (_event, _toState, _toParams, _fromState, _fromParams) => {
             if (sideBarIsExpanded) {
                 collapseSidebar();
             }

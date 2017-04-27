@@ -22,7 +22,6 @@ function getInjectable() {
     let $location: ng.ILocationService;
     let common: CommonService;
     let datacontext: DataContext; // controller dependencies
-    let sayingsController: SayingsController; // the controller
 
     angular.mock.inject((
         _$controller_: ng.IControllerService,
@@ -93,14 +92,14 @@ describe("Controllers", () => {
 
             it("datacontext.sage.getAll should be called", () => {
                 const { $controller, $location, common, datacontext } = getInjectable();
-                const controller = getController($controller, { $location, common, datacontext });
+                getController($controller, { $location, common, datacontext });
 
                 expect(datacontext.sage.getAll).toHaveBeenCalled();
             });
 
             it("datacontext.saying.getAll should be called", () => {
                 const { $controller, $location, common, datacontext } = getInjectable();
-                const controller = getController($controller, { $location, common, datacontext });
+                getController($controller, { $location, common, datacontext });
 
                 expect(datacontext.saying.getAll).toHaveBeenCalled();
             });
@@ -176,7 +175,7 @@ describe("Controllers", () => {
 
         describe("gotoAdd ->", () => {
             it("should set $location.path to add URL", () => {
-                const { $controller, $location, common, datacontext, $rootScope } = getInjectable();
+                const { $controller, $location, common, datacontext } = getInjectable();
                 const controller = getController($controller, { $location, common, datacontext });
                 spyOn($location, "path");
 
@@ -188,7 +187,7 @@ describe("Controllers", () => {
 
         describe("selectedSageChange ->", () => {
             it("should set $location.search sageId to the selectedSage id", () => {
-                const { $controller, $location, common, datacontext, $rootScope } = getInjectable();
+                const { $controller, $location, common, datacontext } = getInjectable();
                 const controller = getController($controller, { $location, common, datacontext });
                 const stubSages = getSagesStub();
                 controller.selectedSage = stubSages[0];

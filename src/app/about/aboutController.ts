@@ -12,7 +12,7 @@ export class AboutController {
     static $inject = [commonServiceName, configName];
     constructor(
         private common: CommonService,
-        private config: Config
+        config: Config
         ) {
 
         this.version = config.version;

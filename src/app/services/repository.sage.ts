@@ -23,7 +23,7 @@ export class RepositorySageService {
     cache: Map<number, Sage>;
 
     static $inject = ["$http", commonServiceName, configName, "moment"];
-    constructor(private $http: ng.IHttpService, private common: CommonService, private config: Config, private moment: typeof Moment) {
+    constructor(private $http: ng.IHttpService, private common: CommonService, config: Config, private moment: typeof Moment) {
         this.log = common.logger.getLogFn(repositorySageServiceName);
         this.rootUrl = config.remoteServiceRoot + "sage";
         this.cache = new Map();

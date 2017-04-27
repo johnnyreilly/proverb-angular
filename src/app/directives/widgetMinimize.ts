@@ -13,7 +13,7 @@ export function widgetMinimize() {
     };
     return directive;
 
-    function link(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) {
+    function link(_scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) {
         // $("body").on("click", ".widget .wminimize", minimize);
         attrs.$set("href", "#");
         attrs.$set("wminimize", undefined);

@@ -1,4 +1,4 @@
-import { configName, Config, ConfigEvents } from "../typesAndInterfaces/config";
+import { configName, Config } from "../typesAndInterfaces/config";
 import { ControllerActivateSuccessData, FailureData, WaiterStartData, WaiterSuccessData } from "../typesAndInterfaces/eventData";
 import { loggerServiceName, LoggerService } from "./logger";
 
@@ -37,7 +37,7 @@ export function commonServiceFactory(
         const events = config.events;
 
         const allPromise = $q.all(promises).then(
-            (eventArgs) => {
+            (_eventArgs) => {
                 const data: ControllerActivateSuccessData = {
                     controllerId: controllerId,
                     title: title
@@ -56,7 +56,7 @@ export function commonServiceFactory(
         return allPromise;
     }
 
-    function $broadcast(...args: any[]): ng.IAngularEvent {
+    function $broadcast(..._args: any[]): ng.IAngularEvent {
         return $rootScope.$broadcast.apply($rootScope, arguments);
     }
 

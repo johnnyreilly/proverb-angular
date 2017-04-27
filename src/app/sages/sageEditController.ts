@@ -74,7 +74,7 @@ export class SageEditController {
                 this._isSavingOrRemoving = true;
 
                 this.common.waiter(this.datacontext.sage.remove(this.sage.id), sageEditControllerName, "Removing " + sageToRemove)
-                    .then(response => {
+                    .then(_response => {
 
                         this.log.success("Removed " + sageToRemove);
                         this.$location.path("/sages");
@@ -94,7 +94,7 @@ export class SageEditController {
         const sageToSave = this.sage.name;
 
         this.common.waiter(this.datacontext.sage.save(this.sage), sageEditControllerName, "Saving " + sageToSave)
-            .then(response => {
+            .then(_response => {
 
                 this.log.success("Saved " + sageToSave);
                 this.$location.path("/sages/detail/" + this.sage.id);

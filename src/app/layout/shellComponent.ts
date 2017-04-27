@@ -22,12 +22,11 @@ class ShellController {
     currentRoute: string;
     topnavCollapsed: boolean;
 
-    static $inject = ["$rootScope", commonServiceName, configName, "$state"];
+    static $inject = ["$rootScope", commonServiceName, configName];
     constructor(
         private $rootScope: ShellRootScope,
         private common: CommonService,
-        private config: Config,
-        private $state: ng.ui.IStateService
+        private config: Config
         ) {
     }
 
@@ -62,17 +61,17 @@ class ShellController {
 
         const events = this.config.events;
 
-        this.$rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
+        this.$rootScope.$on("$stateChangeStart", (_event, _toState, _toParams, _fromState, _fromParams) => {
             this.busyMessage = "Please wait ...";
             this.toggleSpinner(true);
         });
 
-        this.$rootScope.$on("$stateChangeSuccess", (event, toState, toParams, fromState, fromParams) => {
+        this.$rootScope.$on("$stateChangeSuccess", (_event, toState, _toParams, _fromState, _fromParams) => {
             this.currentRoute = toState ? toState.name : "";
         });
 
         this.$rootScope.$on(events.controllerActivateSuccess,
-            (event: ng.IAngularEvent, data: ControllerActivateSuccessData) => {
+            (_event: ng.IAngularEvent, data: ControllerActivateSuccessData) => {
                 // Deactivate spinner as long as the controller that has been activated is not the shell
                 if (data.controllerId !== shellComponentName) {
                     this.toggleSpinner(false);
@@ -81,7 +80,7 @@ class ShellController {
             });
 
         this.$rootScope.$on(events.failure,
-            (event: ng.IAngularEvent, data: FailureData) => {
+            (_event: ng.IAngularEvent, data: FailureData) => {
                 this.toggleSpinner(false);
 
                 const message = this.config.inDebug
@@ -91,18 +90,18 @@ class ShellController {
             });
 
         this.$rootScope.$on(events.spinnerToggle,
-            (event: ng.IAngularEvent, data: SpinnerToggleEvent) => {
+            (_event: ng.IAngularEvent, data: SpinnerToggleEvent) => {
                 this.toggleSpinner(data.show);
             });
 
         this.$rootScope.$on(events.waiterStart,
-            (event: ng.IAngularEvent, data: WaiterStartData) => {
+            (_event: ng.IAngularEvent, data: WaiterStartData) => {
                 this.busyMessage = data.message;
                 this.toggleSpinner(true);
             });
 
         this.$rootScope.$on(events.waiterSuccess,
-            (event: ng.IAngularEvent, data: ControllerActivateSuccessData) => {
+            (_event: ng.IAngularEvent, _data: ControllerActivateSuccessData) => {
                 this.toggleSpinner(false);
             });
     }

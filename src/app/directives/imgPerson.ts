@@ -14,7 +14,7 @@ export function imgPerson(config: Config) {
     };
     return directive;
 
-    function link(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) {
+    function link(_scope: ng.IScope, _element: ng.IAugmentedJQuery, attrs: ng.IAttributes) {
         attrs.$observe("ccImgPerson", function(value: string) {
             value = basePath + (value || unknownImage);
             attrs.$set("src", value);

@@ -1,15 +1,21 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "lib": ["dom", "es2015", "es2016"],
-    "module": "es2015",
-    "moduleResolution": "node",
-    "noEmitOnError": false,
-    "noImplicitAny": true,
-    "preserveConstEnums": true,
-    "removeComments": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "target": "es2015"
-  }
+   "compilerOptions": {
+      "allowJs": false,
+      "allowSyntheticDefaultImports": true,
+      "lib": ["dom", "es2015", "es2016"],
+      "target": "es2016",
+      "module": "es2015",
+      "moduleResolution": "node",
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "removeComments": false,
+      "preserveConstEnums": true,
+      "skipLibCheck": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "sourceMap": true
+   }
 }

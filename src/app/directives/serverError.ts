@@ -55,7 +55,7 @@ export function serverError() {
         }
 
         // wipe the server error message upon keyup or change events so can revalidate with server
-        element.on("keyup change", (event) => {
+        element.on("keyup change", _event => {
             scope.$apply(() => { ngModelController.$setValidity("server", true); });
         });
     }
@@ -64,8 +64,8 @@ export function serverError() {
 // upon keyup / change events set validity to true - to be used alongside tooltip
 export const serverErrorTooltipName = "serverErrorTooltip";
 
-serverErrorTooltip.$inject = ["$compile"];
-export function serverErrorTooltip($compile: ng.ICompileService) {
+serverErrorTooltip.$inject = [];
+export function serverErrorTooltip() {
 
     // Usage:
     // <input class="col-xs-12 col-sm-9" name="sage.name" ng-model="vm.sage.name"
@@ -78,10 +78,10 @@ export function serverErrorTooltip($compile: ng.ICompileService) {
     };
     return directive;
 
-    function link(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ngModelController: ng.INgModelController) {
+    function link(scope: ng.IScope, element: ng.IAugmentedJQuery, _attrs: ng.IAttributes, ngModelController: ng.INgModelController) {
 
         // wipe the server error message upon keyup or change events so can revalidate with server
-        element.on("keyup change", (event) => {
+        element.on("keyup change", _event => {
             scope.$apply(() => { ngModelController.$setValidity("server", true); });
         });
     }

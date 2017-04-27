@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var webpack = require('webpack');
 var WebpackNotifierPlugin = require('webpack-notifier');
+var webpackFailPlugin = require('webpack-fail-plugin');
 var webpackConfig = require('../webpack.config.js');
 var packageJson = require('../package.json');
 
@@ -25,7 +26,8 @@ function buildProduction(done) {
       compress: {
         warnings: true
       }
-    })
+    }),
+    webpackFailPlugin
   );
 
   // run webpack

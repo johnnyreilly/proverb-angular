@@ -19,7 +19,7 @@ export class RepositorySayingService {
     cache: Map<number, Saying>;
 
     static $inject = ["$http", commonServiceName, configName];
-    constructor(private $http: ng.IHttpService, private common: CommonService, private config: Config) {
+    constructor(private $http: ng.IHttpService, private common: CommonService, config: Config) {
         this.log = common.logger.getLogFn(repositorySayingServiceName);
         this.rootUrl = config.remoteServiceRoot + "saying";
         this.cache = new Map();

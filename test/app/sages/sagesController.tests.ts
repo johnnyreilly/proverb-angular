@@ -20,7 +20,6 @@ function getInjectable() {
     let $location: ng.ILocationService;
     let common: CommonService;
     let datacontext: DataContext; // controller dependencies
-    let sagesController: SagesController; // the controller
 
     angular.mock.inject((
         _$controller_: ng.IControllerService,
@@ -78,7 +77,7 @@ describe("Controllers", () => {
 
             it("datacontext.sage.getAll should be called", () => {
                 const { $controller, $location, common, datacontext } = getInjectable();
-                const controller = getController($controller, { $location, common, datacontext });
+                getController($controller, { $location, common, datacontext });
 
                 expect(datacontext.sage.getAll).toHaveBeenCalled();
             });
