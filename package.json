@@ -73,6 +73,7 @@
     "tslint": "^5.1.0",
     "typescript": "^2.0.0",
     "webpack": "^2.2.0",
+    "webpack-fail-plugin": "^1.0.6",
     "webpack-notifier": "^1.2.1"
   },
   "dependencies": {
