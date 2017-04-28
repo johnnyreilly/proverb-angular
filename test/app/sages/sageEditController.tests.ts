@@ -121,7 +121,7 @@ describe("Controllers", () => {
                     $rootScope, $q } = getInjectable();
                 const sage_stub = getSageStub();
 
-                const save_deferred = $q.defer();
+                const save_deferred = $q.defer<number>();
 
                 spyOn(datacontext.sage, "save").and.returnValue(save_deferred.promise);
                 spyOn(common, "waiter").and.callThrough();
@@ -163,7 +163,7 @@ describe("Controllers", () => {
                 const { controller, save_deferred, $rootScope, $location, sage_stub } = getSaveController();
                 controller.save();
 
-                save_deferred.resolve();
+                save_deferred.resolve(sage_stub.id);
                 $rootScope.$digest(); // So Angular processes the resolved promise
 
                 expect(controller.log.success).toHaveBeenCalledWith("Saved " + sage_stub.name);

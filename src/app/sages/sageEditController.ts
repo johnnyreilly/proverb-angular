@@ -94,10 +94,10 @@ export class SageEditController {
         const sageToSave = this.sage.name;
 
         this.common.waiter(this.datacontext.sage.save(this.sage), sageEditControllerName, "Saving " + sageToSave)
-            .then(_response => {
+            .then(response => {
 
                 this.log.success("Saved " + sageToSave);
-                this.$location.path("/sages/detail/" + this.sage.id);
+                this.$location.path("/sages/detail/" + response);
             })
             .catch(response => {
 

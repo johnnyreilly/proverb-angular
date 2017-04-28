@@ -2,6 +2,7 @@ import Moment from "moment";
 
 import { commonServiceName, CommonService } from "../common/common";
 import { configName, Config } from "../typesAndInterfaces/config";
+import { SaveResult } from "../typesAndInterfaces/saveResult";
 import { LoggerFunction } from "../common/logger";
 import { Saying } from "./repository.saying";
 
@@ -68,10 +69,13 @@ export class RepositorySageService {
     }
 
     save(sage: Sage) {
-        return this.$http.post<void>(this.rootUrl, sage).then(response => {
-            this.log("Sage " + sage.name + " [id: " + sage.id + "] saved");
-
-            return response.data;
+        return this.$http.post<SaveResult>(this.rootUrl, sage).then(response => {
+            if (response.data.isSaved) {
+                this.log("Sage " + sage.name + " [id: " + sage.id + "] saved");
+                return response.data.savedId;
+            } else {
+                return this.common.$q.reject(response.data.validations);
+            }
         }, errorReason => this.common.$q.reject(errorReason.data));
     }
 }
