@@ -1,5 +1,6 @@
 ﻿import { commonServiceName, CommonService } from "../common/common";
 import { configName, Config } from "../typesAndInterfaces/config";
+import { SaveResult } from "../typesAndInterfaces/saveResult";
 import { LoggerFunction } from "../common/logger";
 import { Sage } from "./repository.sage";
 
@@ -60,12 +61,13 @@ export class RepositorySayingService {
     }
 
     save(saying: Saying) {
-        return this.$http.post<number>(this.rootUrl, saying).then(response => {
-            const sayingId = response.data || saying.id;
-
-            this.log("Saying [id: " + sayingId + "] saved");
-
-            return sayingId;
+        return this.$http.post<SaveResult>(this.rootUrl, saying).then(response => {
+            if (response.data.isSaved) {
+                this.log("Saying [id: " + response.data.savedId + "] saved");
+                return response.data.savedId;
+            } else {
+                return this.common.$q.reject(response.data.validations);
+            }
         }, errorReason => this.common.$q.reject(errorReason.data));
     }
 }

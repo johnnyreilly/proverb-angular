@@ -71,7 +71,7 @@ export class RepositorySageService {
     save(sage: Sage) {
         return this.$http.post<SaveResult>(this.rootUrl, sage).then(response => {
             if (response.data.isSaved) {
-                this.log("Sage " + sage.name + " [id: " + sage.id + "] saved");
+                this.log("Sage " + sage.name + " [id: " + response.data.savedId + "] saved");
                 return response.data.savedId;
             } else {
                 return this.common.$q.reject(response.data.validations);
